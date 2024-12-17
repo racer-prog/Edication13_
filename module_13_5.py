@@ -3,6 +3,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
+
 data = {}
 
 class UserState(StatesGroup):
@@ -25,6 +26,7 @@ button_calc = KeyboardButton(text="Рассчитать")
 kb.resize_keyboard = True
 kb.add(button_info)
 kb.add(button_calc)
+
 
 @dp.message_handler(text = "Рассчитать")
 async def set_age(message):
