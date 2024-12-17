@@ -16,11 +16,12 @@ dp = Dispatcher(bot, storage= MemoryStorage())
 @dp.message_handler(commands= ["start"])
 async def start_messages(message):
     print(f'Привет {(message["from"]["first_name"])}! Я бот помогающий твоему здоровью.' )
+    # await message.answer(f'Привет {(message["from"]["first_name"])}! Я бот помогающий твоему здоровью.' )
 
 @dp.message_handler()
 async def all_messages(message):
     print(f'{(message["from"]["first_name"])}! Введите команду /start, чтобы начать общение.')
-
+    # await message.answer(f'{(message["from"]["first_name"])}! Введите команду /start, чтобы начать общение.')
 
 
 
