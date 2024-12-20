@@ -4,7 +4,8 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-import crud_functions
+import module_14_3_db
+from module_14_3_db import *
 
 data = {}
 
@@ -37,7 +38,7 @@ button_for_in = InlineKeyboardButton(text='Формулы расчёта', callb
 kb_in.add(button_cal_in)
 kb_in.add(button_for_in)
 
-list_prod = crud_functions.db_read()
+list_prod = module_14_3_db.db_read()
 
 kb_prod = InlineKeyboardMarkup()
 for i,j in zip(range(len(list_prod.values())), list_prod.values()):
@@ -99,7 +100,7 @@ async def start_messages(message):
 
 @dp.message_handler(text='Купить')
 async def get_buying_list(message):
-    all_prod = crud_functions.db_read()
+    all_prod = module_14_3_db.db_read()
     for p in all_prod.values():
         with open(p[3],'rb') as img:
             await message.answer_photo(img, f"Название: {p[0]} | Описание: {p[1]} | Цена: {p[2]}")
